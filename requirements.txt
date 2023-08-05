@@ -5,9 +5,9 @@ absl-py==1.4.0
 astunparse==1.6.3
 beautifulsoup4==4.12.2
 blinker==1.6.2
-ca-certificates==2023.05.30
+# ca-certificates==2023.05.30
 cachetools==5.3.1
-certifi==2023.7.22
+# certifi==2023.7.22
 charset-normalizer==3.2.0
 click==8.1.6
 colorama==0.4.6
@@ -68,7 +68,7 @@ tqdm==4.65.0
 typing-extensions==4.5.0
 tzdata==2023.3
 urllib3==1.26.16
-vc==14.2==h21ff451_1
+vc==14.2
 vs2015_runtime==14.27.29016
 werkzeug==2.3.6
 wheel==0.38.4
