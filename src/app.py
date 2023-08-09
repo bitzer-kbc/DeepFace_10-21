@@ -115,7 +115,7 @@ def predicts():
             # result.html に送る画像(base64_data)を用意する 
             ################################################################
             buf_up = io.BytesIO()
-#            image_up = Image.open(file).convert('RGB')
+            image_up = Image.open(file).convert('RGB')
             #　画像データをバッファに書き込む
             image.save(buf_up, 'png')
             #　バイナリデータを base64 でエンコードして utf-8 でデコード
@@ -134,11 +134,9 @@ def predicts():
 ##  入力された画像に対してコメント文書を生成     ##
 ###############################################
             result_ = main(image)
-
-#            emotion = result_[0]
-            emotion = result_
-#            age = result_[1]
-#            gender = result_[2]
+            emotion = result_[0]
+            age = result_[1]
+            gender = result_[2]
 #            face_locations = detect_faces(image)
 #            result = analyze_face(image, face_locations)
             global_emotion = emotion
@@ -150,10 +148,8 @@ def predicts():
             #print(output_comment)  
             ############# 確認　ここまで　###############################
 ###########                      
-            return render_template('result.html', emotion=emotion, 
+            return render_template('result.html', age=age, gender=gender, emotion=emotion, 
                                    output_comment=output_comment, image_base64=base64_data) 
-#            return render_template('result.html', age=age, gender=gender, emotion=emotion, 
-#                                   output_comment=output_comment, image_base64=base64_data)
 ###########
         return redirect(request.url)
 ##  result.htm に結果を送る・・・
@@ -162,11 +158,9 @@ def predicts():
     # GET メソッドの定義
     elif request.method == 'GET':
         return render_template('index.html')
-    return render_template('result.html', emotion=emotion, output_comment=output_comment, 
+    return render_template('result.html', age=age, gender=gender,
+                           emotion=emotion, output_comment=output_comment, 
                            image_base64=base64_data)
-#    return render_template('result.html', age=age, gender=gender,
-#                           emotion=emotion, output_comment=output_comment, 
-#                           image_base64=base64_data)
 
 # アプリケーションの実行の定義
 if __name__ == '__main__':
