@@ -41,8 +41,10 @@ def analyze_face(image, face_location):
     # 
     detected_face = Image.fromarray(image[y:y+h, x:x+w]) #0802 以下の3行を追加
     detected_face = np.array(detected_face.convert('RGB'))
-    result = DeepFace.analyze(detected_face, actions=['age', 'gender', 'emotion'],\
-                              enforce_detection=False)
+    #result = DeepFace.analyze(detected_face, actions=['age', 'gender', 'emotion'],\
+    #                          enforce_detection=False)
+    ################################################ とりあえず、'emotion'のみとしてみる
+    result = DeepFace.analyze(detected_face, actions=['emotion'], enforce_detection=False)
     ###############################################
 #    print(type(result))
 #    print(result)
@@ -68,17 +70,21 @@ def main(image):
         results = analyze_face(image, face_location)
 
         for result in results:
-          age = result['age']
+#### とりあえずエモーションのみ          age = result['age']
 #         gender = result['gender'] # Man, Woman を確率で表示する場合
 #         dominant とすると、確率的な表現でなくなる
-          gender = result['dominant_gender']
+#          gender = result['dominant_gender']
+######################################
+
           emotion = result['dominant_emotion']
 #         print('\n') # 改行
 #         print(emotion) # emotion のみprint
-          print("\n Age: {}".format(age))
-          print(" Gender: {}".format(gender))
+# とりあえずエモーションのみ
+#          print("\n Age: {}".format(age))
+#          print(" Gender: {}".format(gender))
           print(" Emotion: {}".format(emotion))
-          return(emotion, age, gender) # 追加(emotion のみを返す)
+#          return(emotion, age, gender) # 追加
+          return(emotion) # 追加(emotion のみを返す)
 
 ## IPython.display.Imageを使用して、input_pathで指定された画像を表示します
 # display(Image(input_path)) # 画像を表示しない場合はコメントアウト
