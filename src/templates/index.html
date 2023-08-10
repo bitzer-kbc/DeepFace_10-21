@@ -4,7 +4,12 @@
     画像ファイルをアップロードして, コメントを生成してみよう
 </h3>
 <h4>「ファイルを選択」ボタンをクリックして画像を選択後、<br>
-     「画像に対するコメント」ボタンをクリックしてください。</h4>
+     「画像に対するコメント」ボタンをクリックしてください。<br>
+      ※ 現状ではファイルのサイズは500kb程度が上限の様です（修正中）<br>
+    　※ age、gender の推定を制限しています（メモリ不足対応）
+    
+</h4>
+
 <form method = post enctype = multipart/form-data>
 <p><input type = file name = file>
 <input type = submit value = ' 画像に対するコメント'>
