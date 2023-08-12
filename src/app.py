@@ -159,7 +159,7 @@ def predicts():
 ##  result.htm に結果を送る・・・
 #################################################################################
 
-    # GET メソッドの定義
+    # GET メソッドの定義(age, gender,を戻り値として送らないように制限している)
     elif request.method == 'GET':
         return render_template('index.html')
     return render_template('result.html', emotion=emotion, output_comment=output_comment, 
